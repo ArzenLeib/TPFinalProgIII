@@ -16,7 +16,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { environment } from '../../../enviroments/enviroment';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-data-entry',
