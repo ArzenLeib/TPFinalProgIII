@@ -9,6 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,7 @@ export class NavbarComponent {
   constructor(private http: HttpClient){}
 
   exportarPDF() {
-    this.http.get('http://localhost:443/api/clientes').subscribe((data: any) => {
+    this.http.get(`${environment.apiUrl}/api/clientes` ).subscribe((data: any) => {
 
       const doc = new jsPDF();
       
