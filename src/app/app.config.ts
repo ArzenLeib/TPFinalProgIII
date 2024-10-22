@@ -18,9 +18,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-5rr0ura21d44zwze.us.auth0.com',
       clientId: 'e4ThO0PN9decMU3vHP5uDzdQKMASeRIO',
       cacheLocation: 'localstorage',
-      authorizationParams: {
-        redirect_uri: typeof window !== 'undefined' ? window.location.origin : ''
-    }
+      
   }),provideRouter(routes), provideClientHydration(), provideNzI18n(en_US), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient()
   ]
 };
