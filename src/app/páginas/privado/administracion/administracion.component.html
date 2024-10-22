@@ -1,0 +1,41 @@
+<h2> Administración de Clientes</h2>
+<nz-select [(ngModel)]="filterStatus" (ngModelChange)="aplicarFiltro()">
+  <nz-option nzValue="all" nzLabel="Todos"></nz-option>
+  <nz-option nzValue="enabled" nzLabel="Habilitados"></nz-option>
+  <nz-option nzValue="disabled" nzLabel="Deshabilitados"></nz-option>
+</nz-select>
+<nz-table 
+  #sortTable 
+  [nzData]="filteredData" 
+  nzTableLayout="fixed"
+  [nzShowPagination]="true" 
+  [nzPageSize]="limit" 
+  [(nzPageIndex)]="page"
+  (nzPageIndexChange)="onPageChange($event)">
+    <thead>
+      <tr>
+        <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+            {{ column.title }}
+        </th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.nombre }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.telefono }}</td>
+        <td>{{ data.fechaNacimiento | date }}</td>
+        <td>{{ data.nickname }}</td>
+        <td>{{ data.direccion }}</td>
+        <td>{{ data.habilitado ? 'Habilitado' : 'Deshabilitado' }}</td>
+        <td>
+            <button nz-button *ngIf="data.habilitado" nzType="primary" (click)="onEdit(data)"><span nz-icon nzType="edit" nzTheme="outline"></span></button>
+            <button nz-button nzType="default" (click)="onToggleStatus(data)">
+              @if (data.habilitado) {<span nz-icon nzType="delete" nzTheme="outline"></span> }
+              @else { <span nz-icon nzType="check-circle" nzTheme="outline"></span>}
+            </button>
+        </td>
+      </tr>
+    </tbody>
+</nz-table>

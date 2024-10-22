@@ -1,0 +1,21 @@
+<div class="home-container">
+    <h1>Trabajo Final Progamación III</h1>
+    <p>Your one-stop solution for managing your projects efficiently.</p>
+
+    <div class="cards-container">
+      <nz-card nzTitle="Manage Projects" class="home-card">
+        <p>Organize and track your projects in one place.</p>
+        <button nz-button nzType="primary">Go to Projects</button>
+      </nz-card>
+
+      <nz-card nzTitle="Team Collaboration" class="home-card">
+        <p>Work together with your team seamlessly.</p>
+        <button nz-button nzType="primary">View Teams</button>
+      </nz-card>
+    </div>
+
+    <div class="action-container">
+      <button nz-button nzType="primary" nzSize="large" (click)="isLoggedIn ? auth.logout() : auth.loginWithRedirect()">
+        {{ isLoggedIn ? 'Logout' : 'Acceder' }}</button>
+    </div>
+  </div>

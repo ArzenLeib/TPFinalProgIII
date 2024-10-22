@@ -1,0 +1,60 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombre">Nombre</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Por favor, ingrese un nombre">
+          <input nz-input formControlName="nombre" id="nombre" />
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="¡El E-mail ingresado no es válido!">
+        <input nz-input formControlName="email" id="email" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          nzFor="nickname"
+          nzRequired
+          nzTooltipTitle="Nombre del Usuario para logueo"
+        >
+          <span>Nickname</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Por favor, ingrese un nickname!">
+          <input nz-input id="nickname" formControlName="nickname" />
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="telefono" nzRequired>Teléfono</nz-form-label>
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzValidateStatus]="validateForm.controls['telefono']"
+        nzErrorTip="Por favor, ingrese un número de teléfono!"
+      >
+        <nz-input-group>
+          <input formControlName="telefono" id="'telefono'" nz-input />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fechaNacimiento" nzRequired>Fecha de Nacimiento</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Por favor, ingrese una Fecha de Nacimiento">
+          <nz-date-picker formControlName="fechaNacimiento" id="fechaNacimiento" nzFormat="dd/MM/yyyy" nzPlaceHolder="Fecha"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="direccion">Dirección</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Por favor, ingrese una Dirección">
+          <input nz-input formControlName="direccion" id="direccion" />
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary" [disabled]="isLoading" [nzLoading]="isLoading">
+          {{ isEditMode ? 'Actualizar' : 'Registrar' }}
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+</form>

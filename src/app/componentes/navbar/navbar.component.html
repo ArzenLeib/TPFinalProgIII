@@ -1,0 +1,17 @@
+<ul nz-menu nzTheme="dark" nzMode="vertical">
+<li nz-submenu nzTitle="Usuarios" nzIcon="user">
+    <ul>
+        <li nz-menu-item [routerLinkActive]="['ant-menu-item-selected']" [routerLinkActiveOptions]="{ exact: true }">
+            <a routerLink="client">Administración</a>
+        </li>
+        <li nz-menu-item [routerLinkActive]="['ant-menu-item-selected']" [routerLinkActiveOptions]="{ exact: true }">
+            <a routerLink="client/crear">Creación</a>
+        </li>
+    </ul>
+</li>
+<li nz-menu-item (click)="exportarPDF()">
+    <span nz-icon nzType="file"></span>
+    <span>Exportar</span>
+</li>
+</ul>   
+  

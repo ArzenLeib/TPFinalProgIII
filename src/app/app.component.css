@@ -1,0 +1,38 @@
+.logo {
+    height: 60px;          
+    display: flex;         
+    justify-content: center; 
+    align-items: center;   
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 6px;
+    margin-bottom: 10px;
+}
+
+.logo img {
+    max-height: 100%;      
+    max-width: 100%;       
+    object-fit: contain;   
+}
+
+.logo-text {
+    display: inline;
+    transition: opacity 0.3s ease;
+}
+
+nz-sider {
+    min-height: 100vh; /* Asegúrate de que el sider ocupe toda la altura */
+}
+
+nz-header{
+    background-color: white;
+    padding: 0;
+}
+
+nz-content {
+    margin: 5px 16px;
+}
+
+.inner-content {
+
+}
