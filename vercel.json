@@ -2,26 +2,22 @@
     "version": 2,
     "builds": [
         {
+            "src": "dist/TPFinalProg3/**/*",
+            "use": "@vercel/static"
+        },
+        {
             "src": "src/app/backend/servidor.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "DELETE",
-                "OPTIONS"
-            ]
+            "src": "/api/(.*)",
+            "dest": "/src/app/backend/servidor.js"
         },
         {
-            "src": "/api/(.*)",
-            "dest": "src/app/backend/servidor.js"
+            "src": "/(.*)",
+            "dest": "/dist/TPFinalProg3/$1"
         }
     ]
 }
