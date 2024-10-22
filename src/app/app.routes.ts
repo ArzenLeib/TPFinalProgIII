@@ -11,6 +11,7 @@ export const routes: Routes = [
     //Públicas
     { path: '', component: HomeComponent },
     { path: 'error/:code', component: ErrorComponent },
+    
     //Privadas
     { path: 'client', component: AdministracionComponent, canActivate: [AuthGuard] },
     { path: 'client/crear', component: CreacionComponent, canActivate: [AuthGuard] },
