@@ -8,7 +8,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import 'jspdf-autotable';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -24,7 +24,6 @@ export class NavbarComponent {
   constructor(private http: HttpClient){}
 
   exportarPDF() {
-    console.log('API URL:', environment.apiUrl);
     this.http.get(`${environment.apiUrl}/api/clientes`).subscribe((data: any) => {
 
       const doc = new jsPDF();
@@ -39,7 +38,7 @@ export class NavbarComponent {
       doc.text(`Reporte de Clientes`, 14, 20);
 
       doc.setFontSize(12);
-      doc.text(`Fecha ${fechaFormateada}`, 14, 40);
+      doc.text(`Fecha ${fechaFormateada}`, 14, 30);
 
       const columns = [
         { header: 'Nombre', dataKey: 'nombre' },
@@ -55,11 +54,11 @@ export class NavbarComponent {
         direccion: cliente.direccion,
       }));
       
-      autoTable(doc, {
+      (doc as any).autoTable({
         columns: columns,
         body: rows,
-        startY: 50,
-        theme: 'grid', 
+        startY: 40,
+        theme: 'striped', 
       });
 
       doc.save(`Reporte Clientes ${fechaFormateada}.pdf`);
