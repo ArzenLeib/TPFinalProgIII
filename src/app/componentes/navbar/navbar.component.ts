@@ -24,7 +24,8 @@ export class NavbarComponent {
   constructor(private http: HttpClient){}
 
   exportarPDF() {
-    this.http.get(`${environment.apiUrl}/api/clientes` ).subscribe((data: any) => {
+    console.log('API URL:', environment.apiUrl);
+    this.http.get(`${environment.apiUrl}/api/clientes`).subscribe((data: any) => {
 
       const doc = new jsPDF();
       
