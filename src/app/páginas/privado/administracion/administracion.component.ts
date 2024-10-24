@@ -11,6 +11,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { FormsModule } from '@angular/forms';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { environment } from '../../../../environments/environment';
 
 interface DataItem {
@@ -27,11 +28,14 @@ interface DataItem {
 @Component({
   selector: 'app-administracion',
   standalone: true,
-  imports: [CommonModule, FormsModule, NzMenuModule, NzButtonModule , NzBreadCrumbModule, NzLayoutModule, NzIconModule, NzTableModule, NzPaginationModule, NzSelectModule],
+  imports: [CommonModule, FormsModule, NzMenuModule, NzButtonModule , NzBreadCrumbModule, NzLayoutModule, NzIconModule, NzTableModule, NzPaginationModule, NzSelectModule, NzToolTipModule],
   templateUrl: './administracion.component.html',
   styleUrl: './administracion.component.css'
 })
 export class AdministracionComponent {
+
+  isLoading: boolean = true;
+
     listOfColumn = [
       {
         title: 'Nombre',
@@ -75,7 +79,7 @@ export class AdministracionComponent {
   filterStatus: string = 'all';
   total: number = 0;
   page: number = 1; // Para que la tabla arranque en uno
-  limit: number = 5; // La cantidad de filas que se puede ver por página
+  limit: number = 4; // La cantidad de filas que se puede ver por página
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -84,12 +88,14 @@ export class AdministracionComponent {
   }
 
   loadClientes() {
+    this.isLoading = true;
     const cacheBuster = new Date().getTime();
     this.http.get(`${environment.apiUrl}/api/clientes?page=${this.page}&limit=${this.limit}&_=${cacheBuster}`).subscribe((data: any) => {
       console.log('Datos obtenidos:', data);
       this.total = data.length;
       this.listOfData = data;
       this.aplicarFiltro();
+      this.isLoading = false;
     });
   }
 

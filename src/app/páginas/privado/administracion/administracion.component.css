@@ -1,0 +1,51 @@
+.contenedor-botones{
+    text-align: center;
+}
+
+.contenedor-filtrado {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filtrado-texto {
+    margin-right: 8px;
+}
+
+.filtrado-select{
+    width: auto; 
+    min-width: 150px;
+}
+
+button {
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+button:hover {
+    filter: brightness(1.4);
+}
+
+button span[nz-icon] {
+    color: white;
+}
+  
+.edit-btn {
+    background-color: rgb(38, 86, 189);
+    border-color: white;
+}
+  
+.deshabilitar-btn {
+    background-color: rgb(168, 32, 32);
+    border-color: white;
+}
+  
+.habilitar-btn {
+    background-color: rgb(1, 163, 1);
+    border-color: white;
+}
+  

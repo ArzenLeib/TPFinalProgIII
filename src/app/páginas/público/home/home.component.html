@@ -1,21 +1,37 @@
 <div class="home-container">
-    <h1>Trabajo Final Progamación III</h1>
-    <p>Your one-stop solution for managing your projects efficiently.</p>
+  <h1>Trabajo Final Programación III</h1>
 
-    <div class="cards-container">
-      <nz-card nzTitle="Manage Projects" class="home-card">
-        <p>Organize and track your projects in one place.</p>
-        <button nz-button nzType="primary">Go to Projects</button>
-      </nz-card>
+  <div *ngIf="isLoading">
+    <nz-spin nzSimple></nz-spin>
+  </div>
 
-      <nz-card nzTitle="Team Collaboration" class="home-card">
-        <p>Work together with your team seamlessly.</p>
-        <button nz-button nzType="primary">View Teams</button>
-      </nz-card>
+  <div *ngIf="!isLoading">
+    <div *ngIf="isLoggedIn; else notLoggedIn">
+      <div class="cards-container">
+        <nz-card nzTitle="Administración de Usuarios" class="home-card">
+          <p>Administre, edite y cambie de Estado a los distintos usuarios!</p>
+          <button nz-button nzType="primary"><a routerLink="client">Ir a Administración</a><span nz-icon nzType="profile" nzTheme="outline"></span></button>
+        </nz-card>
+    
+        <nz-card nzTitle="Creación de Usuarios" class="home-card">
+          <p>Agregue un nuevo usuario al sistema!</p>
+          <button nz-button nzType="primary"><a routerLink="client/crear">Creación Usuario</a><span nz-icon nzType="user-add" nzTheme="outline"></span></button>
+        </nz-card>
+      </div>
     </div>
+    
+    <ng-template #notLoggedIn>
+      <div class="no-logueado">
+        <p>Solo puede exportar los usuarios a PDF.</p>
+        <p>Por favor, inicia sesión para acceder a las funciones de administración.</p>
+      </div>
+    </ng-template>
 
     <div class="action-container">
-      <button nz-button nzType="primary" nzSize="large" (click)="isLoggedIn ? auth.logout() : auth.loginWithRedirect()">
-        {{ isLoggedIn ? 'Logout' : 'Acceder' }}</button>
+      <button nz-button nzType="primary" nzSize="large" (click)="isLoggedIn ? logout() : auth.loginWithRedirect()">
+        {{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}
+        <span nz-icon [nzType]="isLoggedIn ? 'logout' : 'login'" nzTheme="outline"></span>
+      </button>
     </div>
   </div>
+</div>

@@ -18,6 +18,7 @@
 .logo-text {
     display: inline;
     transition: opacity 0.3s ease;
+    color: white;
 }
 
 nz-sider {
