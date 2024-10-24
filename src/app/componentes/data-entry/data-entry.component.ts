@@ -68,16 +68,26 @@ export class DataEntryComponent {
   }
 
   loadClienteData(id: string): void {
-    this.http.get(`${environment.apiUrl}/api/clientes/${id}`).subscribe((cliente: any) => {
-      this.validateForm.patchValue({
-        nombre: cliente.nombre,
-        email: cliente.email,
-        telefono: cliente.telefono,
-        fechaNacimiento: new Date(cliente.fechaNacimiento),
-        nickname: cliente.nickname,
-        direccion: cliente.direccion
-      });
-    });
+    this.http.get(`${environment.apiUrl}/api/clientes/${id}`).subscribe(
+      (cliente: any) => {
+        this.validateForm.patchValue({
+          nombre: cliente.nombre,
+          email: cliente.email,
+          telefono: cliente.telefono,
+          fechaNacimiento: new Date(cliente.fechaNacimiento),
+          nickname: cliente.nickname,
+          direccion: cliente.direccion
+        });
+      },
+      (error) => {
+        console.error('Error al cargar los datos del cliente:', error);  
+        if (error.status === 404) {
+          this.router.navigate(['/error/404']);
+        } else {
+          this.router.navigate(['/error/500']);
+        }
+      }
+    );
   }
 
   submitForm(): void {
